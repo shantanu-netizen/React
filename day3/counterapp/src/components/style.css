@@ -1,0 +1,20 @@
+.author {
+    /* border: 2px solid black; */
+    box-shadow: 0px 0px 5px black;
+    display: flex;
+    width: 23%;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 4px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+#bio {
+    font-weight: 600;
+}
