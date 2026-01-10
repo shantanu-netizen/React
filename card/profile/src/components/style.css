@@ -1,0 +1,24 @@
+.profile {
+    /* border: 2px solid black; */
+    box-shadow: 0px 0px 5px black;
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 4px;
+    
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.details {
+    font-weight: 600;
+}
+
+
