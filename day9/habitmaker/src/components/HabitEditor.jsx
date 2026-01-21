@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './HabitEditor.module.css'
 import CustomButton from './customButton/CustomButton'
 export default function HabitEditor() {
@@ -9,15 +9,23 @@ export default function HabitEditor() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setHabits([...Habits, Habit])
+    const updatedHabits = [...Habits, Habit]
+    setHabits(updatedHabits)
+    localStorage.setItem("newHabit",JSON.stringify(updatedHabits))
     console.log(Habit)
-    console.log(Habits)
+    console.log(updatedHabits)
     setHabit("")
   }
   const HandleRemove = (idx) => {
-    let UpdatedHabit = Habits.filter((val, index) => idx != index)
+    let UpdatedHabit = Habits.filter((_, index) => idx != index)
     setHabits(UpdatedHabit)
   }
+  useEffect(() => {
+    let storedHabits = localStorage.getItem("newHabit")
+    if (storedHabits) {
+      setHabits(JSON.parse(storedHabits))
+    }
+  }, [])
   return (
     <>
       <div className={styles.editor}>
@@ -25,13 +33,20 @@ export default function HabitEditor() {
         <input type="text" id={styles.inp} placeholder='Enter your text'  onChange={handleChange} value={Habit} />
         <CustomButton BtnText='Add' style={styles.submitBtn} handler={handleSubmit} />
       </div>
-      <div className={styles.habits}>
-        <ul className={styles.habitsItems}>
-          {Habits.length>0 && Habits.map((val,idx) => (
-            <div className={styles.items}>
-              <li key={idx} className={styles.habitItem}>{val}</li>
-              <CustomButton BtnText="Remove" style={styles.submitBtn} handler={()=>HandleRemove(idx)} />
-            </div>
+        <div className={styles.habits}>
+        <ul className={styles.habitItems}>
+          {Habits.length > 0 &&
+            Habits.map((val, idx) => (
+              <div className={styles.items}>
+                <li key={idx} className={styles.habitItem}>
+                  {val}
+                </li>
+                <CustomButton key={idx + "k"}
+                  BtnText="Remove"
+                  style={styles.submitBtn}
+                  handler={() => HandleRemove(idx)}
+                />
+              </div>
           ))}
 
 
