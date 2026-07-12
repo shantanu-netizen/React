@@ -13,7 +13,8 @@ export default function Conditional({ login }) {
 export default function Conditional({login}) {
     return (
         <>
-            {!login&&<p>Please login first</p>}
+            {!login && <p>Please login first</p>}
+            {login&&<p>Welcome</p>}
         </>
     )
 }

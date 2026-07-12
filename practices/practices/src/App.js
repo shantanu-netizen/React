@@ -9,7 +9,7 @@ function App() {
       <Empolyeecard name="Shantanu" salary="20k" age="21"/>
       <Empolyeecard name="Golu" salary="10k" age="20" />
       <Dept name="sales" budget="1cr" emply="30" />
-      <Conditional login={false} />
+      <Conditional login={true} />
       
     </div>
   );
